@@ -13,17 +13,15 @@ Then just put a (require 'tempo-42Edition-c-cpp) in your .emacs or .myemacs file
 - Or type the corresponding abbreviation in Emacs and hit C-RET or F5
 
 ### TEMPLATES
-List of abbreviations:
- 
- 
-|<abbrev>     |<correspondant sequence>                     |
-|-----------------------------------------------------------|
-|    Preprocessor statements                                |
+
+| Abbreviation| Correspondant Sequence                      |
+|-------------|---------------------------------------------|
+|    **Preprocessor statements**                            |
 |include      |    	#include                                |
 |define       |    	#define                                 |
 |ifdef        |       	#ifdef                               |
 |ifndef       |   	#ifndef                                  |
-|   C statements                                            |
+|   **C statements**                                        |
 |if           |	if (...) { }                                |
 |else  			    |else { ... }                                 |
 |ifelse 			   |if (...) { } else { }                        |
@@ -37,12 +35,11 @@ List of abbreviations:
 |case			      | case: ... break;                            |
 |main		       |	int main() { ... }                          |
 |malloc			    | type * var = (type *) malloc(...)           |
-| C++ statements                                            |
+| **C++ statements**                                        |
 |class			     |class xxx { ... }; (For .hpp) (Canonical)    |
 |cclass       |   class xxx { ... }; (For .cpp) (Canonical) |
 |getset			    | accessor/mutator   (For .hpp) (Canonical)   |
 |cgetset      |   accessor/mutator   (For .cpp) (Canonical) |
-|-----------------------------------------------------------|
 
 ### EXEMPLES
 #### class
