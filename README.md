@@ -56,8 +56,8 @@ Then just put a (require 'tempo-42Edition-c-cpp) in your .emacs or .myemacs file
 //                                                                            //
 // ************************************************************************** //
 
-#ifndef SAMPLE_CLASS_CPP
-# define SAMPLE_CLASS_CPP
+#ifndef SAMPLE_CLASS_HPP
+# define SAMPLE_CLASS_HPP
 
 # include <iostream>
 
