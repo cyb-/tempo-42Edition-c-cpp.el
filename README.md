@@ -52,7 +52,7 @@ Then just put a (require 'tempo-42Edition-c-cpp) in your .emacs or .myemacs file
 //   By: Myrkskog <marvin@42.fr>                    +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/01/07 22:00:38 by Myrkskog          #+#    #+#             //
-//   Updated: 2015/01/07 22:00:38 by Myrkskog         ###   ########.fr       //
+     Updated: 2015/01/07 22:38:32 by Myrkskog         ###   ########.fr         
 //                                                                            //
 // ************************************************************************** //
 
@@ -98,7 +98,7 @@ public:
 //                                                                            //
 // ************************************************************************** //
 
-# include <Sample.class.hpp>
+#include <Sample.class.hpp>
 
 /* CORE */
 Sample::Sample(void) {

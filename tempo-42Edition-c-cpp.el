@@ -301,7 +301,7 @@
 					
 		        	> n> (header-insert)
 
-		        	"# include <" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))) ".hpp>" n> n>
+		        	"#include <" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))) ".hpp>" n> n>
 			  		
 		        	"/* CORE */" > n>
 		        	
