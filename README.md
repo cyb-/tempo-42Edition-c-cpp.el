@@ -6,7 +6,7 @@ You're free to modify the file for your personal uses.
 
 ### INSTALLATION
 Put the tempo-42Edition-c-cpp.el file in the Emacs configuration files Folder.
-Then just put a (require 'tempo-42Edition-c-cpp) in your .emacs or .myemacs file.
+Then just put a `(require 'tempo-42Edition-c-cpp)` in your .emacs or .myemacs file.
 
 ### USAGE
 - Run M-x tempo-template-c-<xx> (where <xx> is the name of the template) for C template or tempo-template-c++-<xx> for C++ templates
