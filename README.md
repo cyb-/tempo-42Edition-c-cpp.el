@@ -15,35 +15,38 @@ Then just put a (require 'tempo-42Edition-c-cpp) in your .emacs or .myemacs file
 ### TEMPLATES
 List of abbreviations:
  
-  	**<abbrev>		<correspondant sequence>** 
- _—-— Preprocessor statements ——-_
-    	include          	#include   
-   	    define          	#define
-    	ifdef           	#ifdef
-    	ifndef          	#ifndef 
- _——- C statements ——-_
-   	    if            	if (...) { }
-    	else  			else { ... }
-    	ifelse 			if (...) { } else { }
-    	while			while (...) { }
-    	for			    for (...) {;;}
-        forinc          for (var=0; var < limit; var++) { }
-        fordec          for (var=value; var > 0; var--) { }
-        foriinc         for (i=0; i < limit; i++) { }
-        foridec         for (i=value; i > 0; i--) { }
-    	switch			switch() {...}
-    	case			case: ... break;
-    	main			int main() { ... }
-    	malloc			type * var = (type *) malloc(...)
- _--- C++ statements ---_
-    	class			class xxx { ... }; (For .hpp) (Canonical)
-        cclass          class xxx { ... }; (For .cpp) (Canonical)
-    	getset			accessor/mutator   (For .hpp) (Canonical)
-        cgetset         accessor/mutator   (For .cpp) (Canonical)
+ 
+|<abbrev>     |<correspondant sequence>                     |
+|-----------------------------------------------------------|
+|    Preprocessor statements                                |
+|include      |    	#include                                |
+|define       |    	#define                                 |
+|ifdef        |       	#ifdef                               |
+|ifndef       |   	#ifndef                                  |
+|   C statements                                            |
+|if           |	if (...) { }                                |
+|else  			    |else { ... }                                 |
+|ifelse 			   |if (...) { } else { }                        |
+|while			     | while (...) { }                             |
+|for			       |for (...) {;;}                               |
+|forinc       |   for (var=0; var < limit; var++) { }       |
+|fordec       |   for (var=value; var > 0; var--) { }       |
+|foriinc      |   for (i=0; i < limit; i++) { }             |
+|foridec      |   for (i=value; i > 0; i--) { }             |
+|switch			    | switch() {...}                              |
+|case			      | case: ... break;                            |
+|main		       |	int main() { ... }                          |
+|malloc			    | type * var = (type *) malloc(...)           |
+| C++ statements                                            |
+|class			     |class xxx { ... }; (For .hpp) (Canonical)    |
+|cclass       |   class xxx { ... }; (For .cpp) (Canonical) |
+|getset			    | accessor/mutator   (For .hpp) (Canonical)   |
+|cgetset      |   accessor/mutator   (For .cpp) (Canonical) |
+|-----------------------------------------------------------|
 
 ### EXEMPLES
 #### class
-```
+```c++
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
@@ -74,7 +77,7 @@ public:
 ```
 
 #### cclass:
-```
+```c++
 // ************************************************************************** //
 //                                                        :::      ::::::::   //
 //   Sample.class.cpp                                   :+:      :+:    :+:   //
