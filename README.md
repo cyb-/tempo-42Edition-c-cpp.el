@@ -71,6 +71,18 @@ public:
     Sample(const Sample &src);
     Sample(int var);
     ~Sample(void);
+    
+    /* Accessors */
+    int getVar(void) const;
+
+    /* Mutators */
+    bool setVar(int var);
+
+    /* Operator Overload */
+    Sample &operator=(Sample const &rhs);
+};
+
+#endif
 ```
 
 #### cclass:
