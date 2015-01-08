@@ -6,16 +6,22 @@ You're free to modify the file for your personal uses.
 
 ### INSTALLATION
 #### Prerequisite
-- header.el for `class` and `cclass`
-- list.el, comment.el and string.el for header.el
+- `header.el` for `class` and `cclass`
+- `list.el`, `comment.el` and `string.el` for `header.el`
 
 #### Installation
-Put the tempo-42Edition-c-cpp.el file in the Emacs configuration files Folder.
+Put the `tempo-42Edition-c-cpp.el` file in the Emacs configuration files Folder.
 Then just put a `(require 'tempo-42Edition-c-cpp)` in your .emacs or .myemacs file.
 
 If you don't have a configuration file Foler, please follow the next steps:
 - Go in your `.emacs`
 - Add the following lines
+```
+(setq config_files "xxx")
+(setq load-path (append (list nil config_files) load-path))
+```
+Where "xxx" is your configuration file Folder name.
+- Then follow the previous steps to load the `tempo-42Edition-c-cpp.el`.
 
 ### USAGE
 - Run M-x tempo-template-c-<xx> (where <xx> is the name of the template) for C template or tempo-template-c++-<xx> for C++ templates
