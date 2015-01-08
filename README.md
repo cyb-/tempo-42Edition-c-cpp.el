@@ -59,7 +59,7 @@ Where "xxx" is your configuration file Folder name.
 |cout         |   std::cout <<  << std::endl;               |
 |cin          |   std::cin << ;                             |
 
-### EXEMPLES
+### EXAMPLES
 #### class
 ```c++
 // ************************************************************************** //
