@@ -433,5 +433,5 @@
 		       "Insert get set methods"
 		       'c++-tempo-tags)
 
-(provide 'tempo-c-cpp)
+(provide 'tempo-42Edition-c-cpp)
 ;;; tempo-c-cpp.el ends here
