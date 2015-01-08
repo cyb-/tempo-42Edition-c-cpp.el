@@ -116,7 +116,7 @@ public:
 //                                                                            //
 // ************************************************************************** //
 
-#include <Sample.class.hpp>
+#include "Sample.class.hpp"
 
 /* CORE */
 Sample::Sample(void) {
