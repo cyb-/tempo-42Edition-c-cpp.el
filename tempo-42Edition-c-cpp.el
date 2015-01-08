@@ -404,7 +404,7 @@
 					(tempo-save-named 'm_var (concat "_" (tempo-lookup-named 'var)))
 					(tempo-save-named 'fnBase (upcase-initials (tempo-lookup-named 'var)))
 
-			 		(s virtual) (s type) " "(s class) "::get" (s fnBase) "() const {" > n>
+			 		(s virtual) (s type) " "(s class) "::get" (s fnBase) "(void) const {" > n>
 			 		"return (this->" (s m_var) ");" > n>
 		        	"}" > n>
 
@@ -426,7 +426,7 @@
 					(tempo-save-named 'fnBase (upcase-initials (tempo-lookup-named 'var)))
 
 			 		(s type) " " (s m_var) ";" > n>
-			 		(s virtual) (s type) " get" (s fnBase) "() const;" > n>
+			 		(s virtual) (s type) " get" (s fnBase) "(void) const;" > n>
 			 		(s virtual) "bool set" (s fnBase) "(" (s type) " " (s var) ");" > n
 			 )
 		       "getset"
