@@ -154,3 +154,4 @@ Sample &Sample::operator=(Sample const &rhs) {
 
 ### SOURCES AND THANKS
 Thanks to Sebastien Varrette for the initial file : [tempo-c-cpp.el](http://www.emacswiki.org/emacs/tempo-c-cpp.el)
+Thanks to Emilien Baudet for his beta utilisation and advices : [GitHub](https://github.com/ebaudet)
