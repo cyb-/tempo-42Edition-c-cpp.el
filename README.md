@@ -1,6 +1,6 @@
 # [Emacs] Tempo-42Edition-c-cpp.el
 ## A Personal version of the tempo-c-cpp.el Template for Emacs, adding C and C++ skeletons.
-tempo-c-cpp.el is a ELisp configuration file for Emacs adding a lot of templates for easy and fast to use skeletons.
+**tempo-c-cpp.el** is a ELisp configuration file for Emacs adding a lot of templates for easy and fast to use skeletons.
 I modified them and added some to get the perfect file for 42.
 You're free to modify the file for your personal uses.
 
@@ -24,8 +24,8 @@ Where "xxx" is your configuration file Folder name.
 - Then follow the previous steps to load the `tempo-42Edition-c-cpp.el`.
 
 ### USAGE
-- Run M-x tempo-template-c-<xx> (where <xx> is the name of the template) for C template or tempo-template-c++-<xx> for C++ templates
-- Or type the corresponding abbreviation in Emacs and hit C-RET or F5
+- Run `M-x tempo-template-c-<xx>` (where <xx> is the name of the template) for C template or `tempo-template-c++-<xx>` for C++ templates
+- Or type the corresponding abbreviation in Emacs and hit `C-RET` or `F5`
 
 ### TEMPLATES
 
