@@ -66,11 +66,14 @@
 ;;    	case				case: ... break;
 ;;    	main				int main() { ... }
 ;;    	malloc				type * var = (type *) malloc(...)
+;;		function			type name() { return (); }
 ;; --- C++ statements
 ;;    	class			class xxx { ... }; (For .hpp)
 ;;      cclass          class xxx { ... }; (For .cpp)
 ;;    	getset			accessor/mutator   (For .hpp)
 ;;      cgetset         accessor/mutator   (For .cpp)
+;;		cout			std::cout <<  << std::endl;
+;;		cin				std::cin << ;
 
 (require 'tempo)
 (setq tempo-interactive t)
@@ -285,8 +288,39 @@
 		       "Insert a C case statement"
 		       'c-tempo-tags)
 
+(tempo-define-template "c-function"
+				'(
+				  	(p "Return type: "     type 'noinsert)
+			 		(p "Function Name: " name  'noinsert)
+
+					> (s type) " " (s name) "(" ~ ")" > n>
+					"{" > n>
+					"return ();" > n>
+					"}" > n
+				  )
+				"function"
+				"Insert a C function"
+				'c-tempo-tags)
+
 ;;;C++-Mode Templates
 ;;(setq max-lisp-eval-depth 500) 
+
+(tempo-define-template "c++-cout"
+			   '(
+				 > "std::cout << " ~ " << std::endl;" > n
+				)
+			   "cout"
+			   "Insert a C++ cout statement"
+			   'c++-tempo-tags)
+
+(tempo-define-template "c++-cin"
+			   '(
+				 > "std::cin << " ~ ";" > n
+				)
+			   "cin"
+			   "Insert a C++ cin statement"
+			   'c++-tempo-tags)
+
 
 (tempo-define-template "c++-cclass"
 		        '(
@@ -301,7 +335,7 @@
 					
 		        	> n> (header-insert)
 
-		        	"#include <" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))) ".hpp>" n> n>
+		        	"#include \"" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))) ".hpp\"" n> n>
 			  		
 		        	"/* CORE */" > n>
 		        	

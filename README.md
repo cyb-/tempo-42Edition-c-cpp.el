@@ -34,27 +34,30 @@ Where "xxx" is your configuration file Folder name.
 |    **Preprocessor statements**                            |
 |include      |    	#include                                |
 |define       |    	#define                                 |
-|ifdef        |       	#ifdef                               |
-|ifndef       |   	#ifndef                                  |
+|ifdef        |       	#ifdef                              |
+|ifndef       |   	#ifndef                                 |
 |   **C statements**                                        |
 |if           |	if (...) { }                                |
-|else  			    |else { ... }                                 |
-|ifelse 			   |if (...) { } else { }                        |
-|while			     | while (...) { }                             |
-|for			       |for (...) {;;}                               |
+|else  		  |else { ... }                                 |
+|ifelse 	  |if (...) { } else { }                        |
+|while        | while (...) { }                             |
+|for          |for (...) {;;}                               |
 |forinc       |   for (var=0; var < limit; var++) { }       |
 |fordec       |   for (var=value; var > 0; var--) { }       |
 |foriinc      |   for (i=0; i < limit; i++) { }             |
 |foridec      |   for (i=value; i > 0; i--) { }             |
-|switch			    | switch() {...}                              |
-|case			      | case: ... break;                            |
-|main		       |	int main() { ... }                          |
-|malloc			    | type * var = (type *) malloc(...)           |
+|switch	      | switch() {...}                              |
+|case	      | case: ... break;                            |
+|main	      |	int main() { ... }                          |
+|malloc	      | type * var = (type *) malloc(...)           |
+|function     | type name() { return (); }                  |
 | **C++ statements**                                        |
-|class			     |class xxx { ... }; (For .hpp) (Canonical)    |
+|class	      |class xxx { ... }; (For .hpp) (Canonical)    |
 |cclass       |   class xxx { ... }; (For .cpp) (Canonical) |
-|getset			    | accessor/mutator   (For .hpp) (Canonical)   |
+|getset	      | accessor/mutator   (For .hpp) (Canonical)   |
 |cgetset      |   accessor/mutator   (For .cpp) (Canonical) |
+|cout         |   std::cout <<  << std::endl;               |
+|cin          |   std::cin << ;                             |
 
 ### EXEMPLES
 #### class
