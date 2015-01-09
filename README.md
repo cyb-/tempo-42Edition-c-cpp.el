@@ -57,7 +57,7 @@ Where "xxx" is your configuration file Folder name.
 |getset	      | accessor/mutator   (For .hpp) (Canonical)   |
 |cgetset      |   accessor/mutator   (For .cpp) (Canonical) |
 |cout         |   std::cout <<  << std::endl;               |
-|cin          |   std::cin << ;                             |
+|cin          |   std::cin >> ;                             |
 
 ### EXAMPLES
 #### class
