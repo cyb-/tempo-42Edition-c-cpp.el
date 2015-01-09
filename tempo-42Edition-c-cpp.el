@@ -73,7 +73,7 @@
 ;;    	getset			accessor/mutator   (For .hpp)
 ;;      cgetset         accessor/mutator   (For .cpp)
 ;;		cout			std::cout <<  << std::endl;
-;;		cin				std::cin << ;
+;;		cin				std::cin >> ;
 
 (require 'tempo)
 (setq tempo-interactive t)
@@ -315,7 +315,7 @@
 
 (tempo-define-template "c++-cin"
 			   '(
-				 > "std::cin << " ~ ";" > n
+				 > "std::cin >> " ~ ";" > n
 				)
 			   "cin"
 			   "Insert a C++ cin statement"
