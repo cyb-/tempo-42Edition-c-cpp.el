@@ -58,6 +58,8 @@ Where "xxx" is your configuration file Folder name.
 |cgetset      |   accessor/mutator   (For .cpp) (Canonical) |
 |cout         |   std::cout <<  << std::endl;               |
 |cin          |   std::cin >> ;                             |
+| **BETA**													|
+|method		  | insert contextually a base method			|
 
 ### EXAMPLES
 #### class
@@ -70,7 +72,7 @@ Where "xxx" is your configuration file Folder name.
 //   By: Myrkskog <marvin@42.fr>                    +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/01/07 22:00:38 by Myrkskog          #+#    #+#             //
-//   Updated: 2015/01/07 22:38:32 by Myrkskog         ###   ########.fr       //
+     Updated: 2015/01/10 06:58:30 by Myrkskog         ###   ########.fr         
 //                                                                            //
 // ************************************************************************** //
 

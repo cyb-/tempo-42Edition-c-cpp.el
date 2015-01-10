@@ -303,7 +303,8 @@
 				'c-tempo-tags)
 
 ;;;C++-Mode Templates
-;;(setq max-lisp-eval-depth 500) 
+;;(setq max-lisp-eval-depth 900)
+
 
 (tempo-define-template "c++-cout"
 			   '(
@@ -332,13 +333,12 @@
 					(tempo-save-named 'm_var (concat "_" (tempo-lookup-named 'var)))
 					(tempo-save-named 'fnBase (upcase-initials (tempo-lookup-named 'var)))
 
-					
 		        	> n> (header-insert)
 
 		        	"#include \"" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))) ".hpp\"" n> n>
-			  		
+
 		        	"/* CORE */" > n>
-		        	
+
 		        	(s class) "::" (s class) "(void) {" > n>
 		        	"return ;" > n>
 		        	"}" > n
@@ -466,6 +466,48 @@
 		       "getset"
 		       "Insert get set methods"
 		       'c++-tempo-tags)
+
+(tempo-define-template "c++-cmethod"
+					   '(
+						 (tempo-save-named 'fileName (file-name-nondirectory (buffer-file-name)))
+						 (tempo-save-named 'class (upcase-initials (replace-regexp-in-string "[.].*" "" (tempo-lookup-named 'fileName))))
+
+						 (p "Return type: "     type 'noinsert)
+						 (p "Function Name: " name  'noinsert)
+						 (tempo-save-named 'const (if (y-or-n-p  "const?") " const" ""))
+
+						 > (s type) " " (s class) "::" (s name) "(" ~ ")" (s const) > n>
+						 "{" > n>
+						 "return ();" > n>
+						 "}" > n
+						 )
+					   "cmethod"
+					   "Insert a C++ Class Method (cpp)"
+					   'c++-tempo-tags)
+
+(tempo-define-template "c++-hmethod"
+					   '(
+						 (p "Return type: "     type 'noinsert)
+						 (p "Function Name: " name  'noinsert)
+						 (tempo-save-named 'const (if (y-or-n-p  "const?") " const" ""))
+
+						 > (s type) " " (s name) "(" ~ ")" (s const) ";" > n
+						 )
+					   "hmethod"
+					   "Insert a C++ Class Method (hpp)"
+					   'c++-tempo-tags)
+
+
+(tempo-define-template "c++-method"
+				'(
+  				  (tempo-save-named 'fileExt (file-name-extension (buffer-file-name)))
+				  (if (equal (tempo-lookup-named `fileExt) "cpp")
+					  (tempo-template-c++-cmethod)
+					(tempo-template-c++-hmethod))
+				  )
+				"method"
+				"Insert a C++ Class Method"
+				'c++-tempo-tags)
 
 (provide 'tempo-42Edition-c-cpp)
 ;;; tempo-c-cpp.el ends here
