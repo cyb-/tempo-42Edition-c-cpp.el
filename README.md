@@ -7,6 +7,7 @@ You're free to modify the file for your personal uses.
 ### INSTALLATION
 #### Prerequisite
 - `header.el` for `class` and `cclass`
+- `comment.el` for `cclass`
 - `list.el`, `comment.el` and `string.el` for `header.el`
 
 #### Installation
@@ -70,7 +71,7 @@ Where "xxx" is your configuration file Folder name.
 //   By: Myrkskog <marvin@42.fr>                    +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/01/07 22:00:38 by Myrkskog          #+#    #+#             //
-//   Updated: 2015/01/07 22:38:32 by Myrkskog         ###   ########.fr       //
+//   Updated: 2015/01/23 22:52:26 by Myrkskog         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -81,23 +82,24 @@ Where "xxx" is your configuration file Folder name.
 
 class Sample {
 
-private:
-    int _var;
-
 public:
     Sample(void);
-    Sample(const Sample &src);
+    Sample(Sample const & src);
     Sample(int var);
     ~Sample(void);
     
+    /* Operator Overload */
+    Sample &	operator=(Sample const & rhs);
+
     /* Accessors */
-    int getVar(void) const;
+    int		getVar(void) const;
 
     /* Mutators */
-    bool setVar(int var);
+    bool	setVar(int val);
 
-    /* Operator Overload */
-    Sample &operator=(Sample const &rhs);
+private:
+    int		_var;
+
 };
 
 #endif
@@ -118,40 +120,63 @@ public:
 
 #include "Sample.class.hpp"
 
-/* CORE */
-Sample::Sample(void) {
-    return ;
-}
-Sample::Sample(Sample const &src) {
+// ************************************************************************** //
+//                                    CORE                                    //
+// ************************************************************************** //
+
+Sample::Sample(void)
+{}
+
+Sample::Sample(Sample const & src)
+{
     *this = src;
-    return ;
 }
 Sample::Sample(int var) : _var(var)
+{}
+
+Sample::~Sample(void)
+{}
+
+// ************************************************************************** //
+//                                                                            //
+//                             Operators Overload                             //
+//                                                                            //
+// ************************************************************************** //
+
+Sample &	Sample::operator=(Sample const & rhs)
 {
-    return ;
-}
-Sample::~Sample(void) {
-    return ;
+    if (this != &rhs)
+    {
+        this->_var = rhs.getVar();
+    }
+    return (*this);
 }
 
-/* Accessors */
-int Sample::getVar(void) const {
+// ************************************************************************** //
+//                                                                            //
+//                                 Accessors                                  //
+//                                                                            //
+// ************************************************************************** //
+
+int			Sample::getVar(void) const
+{
     return (this->_var);
 }
 
-/* Mutators */
-bool Sample::setVar(int var) {
-    this->_var = var;
-    return (true);
-}
+// ************************************************************************** //
+//                                                                            //
+//                                  Mutators                                  //
+//                                                                            //
+// ************************************************************************** //
 
-/* Operator Overload */
-Sample &Sample::operator=(Sample const &rhs) {
-    this->_var = rhs.getVar();
-    return (*this);
+bool		Sample::setVar(int val)
+{
+    this->_var = val;
+    return (true);
 }
 ```
 
 ### SOURCES AND THANKS
 - Thanks to Sebastien Varrette for the initial file : [tempo-c-cpp.el](http://www.emacswiki.org/emacs/tempo-c-cpp.el)
+- Thanks to Sylvain Conso for the original [tempo-42Edition-c-cpp.el](https://github.com/Sconso/tempo-42Edition-c-cpp.el)
 - Thanks to Emilien Baudet for his beta utilisation and advices : [GitHub](https://github.com/ebaudet)
