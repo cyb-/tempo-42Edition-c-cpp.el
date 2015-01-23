@@ -323,55 +323,65 @@
 
 
 (tempo-define-template "c++-cclass"
-		        '(
-		        	(p "type: "     type 'noinsert)
-			 		(p "variable: " var  'noinsert)
+			'(
+				  	(p "type: "     type 'noinsert)
+					(p "variable: " var  'noinsert)
 					(tempo-save-named 'fileName (file-name-nondirectory (buffer-file-name)))
 					(tempo-save-named 'class (upcase-initials (replace-regexp-in-string "[.].*" "" (tempo-lookup-named 'fileName))))
 					(tempo-save-named 'fileName (replace-regexp-in-string "[.]" "_" (tempo-lookup-named 'fileName)))
 					(tempo-save-named 'm_var (concat "_" (tempo-lookup-named 'var)))
 					(tempo-save-named 'fnBase (upcase-initials (tempo-lookup-named 'var)))
 
-					
-		        	> n> (header-insert)
 
-		        	"#include \"" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))) ".hpp\"" n> n>
-			  		
-		        	"/* CORE */" > n>
-		        	
-		        	(s class) "::" (s class) "(void) {" > n>
-		        	"return ;" > n>
-		        	"}" > n
-					(s class) "::" (s class) "(" (s class) " const &src) {" > n>
-		        	"*this = src;" > n>
-		        	"return ;" > n>
-		        	"}" > n
-		        	(s class) "::" (s class) "(" (s type) " " (s var) ") : " (s m_var) "(" (s var) ")" > n>
-		        	"{" > n>
-		        	"return ;" > n>
-		        	"}" > n
-		        	(s class) "::~" (s class) "(void) {" > n>
-		        	"return ;" > n>
-		        	"}" > n
-		        	n>
+					> n> (header-insert)
 
-		        	"/* Accessors */" > n>
-		        	(s type) " " (s class) "::get" (s fnBase) "(void) const {" > n>
-		        	"return (this->" (s m_var) ");" > n>
-		        	"}" > n
-		        	n>
-		        	"/* Mutators */" > n>
-		        	"bool " (s class) "::set" (s fnBase) "(" (s type) " " (s var) ") {" > n>
-		        	"this->" (s m_var) " = " (s var) ";" > n>
-		        	"return (true);" > n>
-		        	"}" > n
-		        	n>
-		        	"/* Operator Overload */" > n>
-		        	(s class) " &" (s class) "::operator=(" (s class) " const &rhs) {" > n>
-		        	"this->" (s m_var) " = rhs.get" (s fnBase) "();" > n>
-		        	"return (*this);" > n>
-		        	"}" > n
-			 	)
+					"#include \"" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))) ".hpp\"" n> n>
+
+					(comments-insert-small-box "CORE")
+					n>
+					(s class) "::" (s class) "(void)" > n>
+					"{}" > n
+					n>
+					(s class) "::" (s class) "(" (s class) " const & src)" > n>
+					"{" > n
+					"*this = src;" > n>
+					"}" > n
+					n>
+					(s class) "::" (s class) "(" (s type) " " (s var) ") : " (s m_var) "(" (s var) ")" > n>
+					"{}" > n
+					n>
+					(s class) "::~" (s class) "(void)" > n>
+					"{}" > n
+					n>
+
+					(comments-insert-box "Operators Overload")
+					n>
+					(s class) " &	" (s class) "::operator=(" (s class) " const & rhs)" > n>
+					"{" > n
+					"if (this != &rhs)" > n
+					"{" > n
+					"this->" (s m_var) " = rhs.get" (s fnBase) "();" > n>
+					"}" > n
+					"return (*this);" > n>
+					"}" > n
+					n>
+
+					(comments-insert-box "Accessors")
+					n>
+					(s type) "		" (s class) "::get" (s fnBase) "(void) const" > n>
+					"{" > n
+					"return (this->" (s m_var) ");" > n>
+					"}" > n
+					n>
+
+					(comments-insert-box "Mutators")
+					n>
+					"bool	" (s class) "::set" (s fnBase) "(" (s type) " val)" > n>
+					"{" > n
+					"this->" (s m_var) " = val;" > n>
+					"return (true);" > n>
+					"}" > n
+		   )
 		       "cclass"
 		       "Insert a class skeleton"
 		       'c++-tempo-tags)
@@ -381,6 +391,7 @@
 		        '(
 		        	(p "type: "     type 'noinsert)
 			 		(p "variable: " var  'noinsert)
+					(tempo-save-named 'virtual (if (y-or-n-p  "virtual?") "virtual " ""))
 					(tempo-save-named 'fileName (file-name-nondirectory (buffer-file-name)))
 					(tempo-save-named 'class (upcase-initials (replace-regexp-in-string "[.].*" "" (tempo-lookup-named 'fileName))))
 					(tempo-save-named 'fileName (replace-regexp-in-string "[.]" "_" (tempo-lookup-named 'fileName)))
@@ -397,31 +408,36 @@
 			  		
 			  		"class " (s class) " {" > n n>
 
-			  		"private:" > n>
-			  			(tempo-save-named 'm_var (concat "_" (tempo-lookup-named 'var)))
-						(tempo-save-named 'fnBase (upcase-initials (tempo-lookup-named 'var)))
-
-			  			(s type) " " (s m_var) ";" > n
-			  			~ n>
-
 			 			"public:" > n>
-			  				(s class) "(void);" > n>
-			  				(s class) "(const " (s class) " &src);" > n>
-			  				(s class) "(" (s type) " " (s var) ");" > n>
-			  				"~" (s class) "(void);" > n
-			 				n>
-							"/* Accessors */" > n>
-							(s type) " get" (s fnBase) "(void) const;" > n
+							(s class) "(void);" > n>
+							(s class) "(" (s class) " const & src);" > n>
+							(s class) "(" (s type) " " (s var) ");" > n>
+							(s virtual) "~" (s class) "(void);" > n
 							n>
-							"/* Mutators */" > n>
-							"bool set" (s fnBase) "(" (s type) " " (s var) ");" > n
-							n>
+
 							"/* Operator Overload */" > n>
-							(s class) " &operator=(" (s class) " const &rhs);" > n>
-			 				"};" > n
-			 				n>
-			 				"#endif" >
-			 	)
+							(s class) " &	operator=(" (s class) " const & rhs);" > n>
+							n>
+
+							"/* Accessors */" > n>
+							(s type) "		get" (s fnBase) "(void) const;" > n
+							n>
+
+							"/* Mutators */" > n>
+							"bool	set" (s fnBase) "(" (s type) " val);" > n
+							n>
+
+			  			"private:" > n>
+							(tempo-save-named 'm_var (concat "_" (tempo-lookup-named 'var)))
+							(tempo-save-named 'fnBase (upcase-initials (tempo-lookup-named 'var)))
+
+							(s type) " " (s m_var) ";" > n
+							~ n>
+
+					"};" > n
+					n>
+					"#endif" > n
+			   )
 		       "class"
 		       "Insert a class skeleton"
 		       'c++-tempo-tags)
